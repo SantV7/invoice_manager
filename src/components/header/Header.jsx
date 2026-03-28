@@ -16,14 +16,18 @@ const Header = () => {
             <LiaUserSecretSolid color="lightgray" size={50}/>
         </div>
 
-        <div onClick={() => setEyeState(!eyeState)} className={styles.icon_usage}>
-            {
-                eyeState
-                ? <FaRegEye className={styles.icons_hover} size={26} />
-                : <FaEyeLowVision className={styles.icons_hover} size={26}/>
-            }
+        <div className={styles.icon_usage}>
+            <div onClick={() => setEyeState(!eyeState)} className="eyeReveal">
+                {
+                    eyeState
+                    ? <FaRegEye className={styles.icons_hover} size={28} />
+                    : <FaEyeLowVision className={styles.icons_hover} size={28}/>
+                }
+            </div>
             
-            <FaHistory className={styles.icons_hover} size={26} />
+            <div className="reloadResults">
+                <FaHistory className={styles.icons_hover} size={26} />
+            </div>
         </div>
       </header>    
     </>
