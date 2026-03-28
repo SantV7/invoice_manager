@@ -8,11 +8,21 @@ import { useState } from "react";
 
 const Header = () => {
   const [profileState, setProfileState] = useState(false)
+  const [eyeState, setEyeState] = useState(true)
+  const [phone, setPhone] = useState("")
+
+  const verifyTelNumber = (e) => {
+    let value = e.target.value
+
+    value = value.replace(/\D/g, "")
+
+    value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+    value = value.replace(/(\d{5})(\d)/, "$1-$2")
+    setPhone(value)
+
+  }
 
 
-
-
-    const [eyeState, setEyeState] = useState(true)
   return (
     <>
       <header className={styles.headerAcc}>
@@ -28,7 +38,11 @@ const Header = () => {
               <br />
 
               <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
-              <input className={styles.data_user} type="number" name="number_tell" id="number_tell" placeholder="(00)00000-0000"/>
+              <input value={phone} maxLength={15} onChange={(verifyTelNumber)} className={styles.data_user} type="tel" name="number_tell" id="number_tell" placeholder="(00) 00000-0000"/>
+
+              <br /> 
+
+              <button id="save_data">Salvar dados</button>
             </div>
           : ''
         }

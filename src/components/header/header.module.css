@@ -15,14 +15,19 @@
     position: absolute;
     top: 160px;
     left: 50%;
+    font-family: poppins, Arial, Helvetica, sans-serif;
     transform: translateX(-50%);
+}
+
+.label_data_profile {
+    font-size: 20px;
 }
 
 .data_user {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid rgba(68, 68, 196, 0.295);
-    color: white;
+    
     outline: none;
     transition:  ease-in-out 0.39s;
 }
