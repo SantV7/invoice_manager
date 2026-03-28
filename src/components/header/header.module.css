@@ -5,14 +5,46 @@
     padding: 10px;
 }
 
+#area_profile {
+    background-color: rgb(220, 222, 240);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.212);
+    height: 200px;
+    width: 76%;
+    padding: 10px;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.data_user {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(68, 68, 196, 0.295);
+    color: white;
+    outline: none;
+    transition:  ease-in-out 0.39s;
+}
+
+.data_user:focus {
+    border-radius: 8px;
+    border: 1px solid rgb(106, 106, 253);
+}
+
 .icon_user {
     cursor: pointer;
-    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.116);
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.086);
     width: 54.2px;
     height: 54.2px;
+    transition: ease 0.17s;
     text-align: center;
     border-radius: 50%;
     background-color: rgba(138, 140, 156, 0.493);
+}
+
+.icon_user:hover {
+    scale: 1.1;
 }
 
 .icon_usage {
@@ -26,9 +58,10 @@
 
 
 .icons_hover {
-    transition: ease 0.3s;
+    transition: ease 0.23s;
 }
 
 .icons_hover:hover {
     scale: 1.1;
 }
+

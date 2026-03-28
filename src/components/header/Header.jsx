@@ -22,9 +22,13 @@ const Header = () => {
 
         {
           profileState
-          ? <div id="area_profile">
-              <label htmlFor="name_user">Nome de usuário</label>
-              <input type="text" placeholder="Digite o nome de usuário"/>
+          ? <div id={styles.area_profile}>
+              <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
+              <input className={styles.data_user} type="text" placeholder="Digite o nome de usuário"/>
+              <br />
+
+              <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
+              <input className={styles.data_user} type="number" name="number_tell" id="number_tell" placeholder="(00)00000-0000"/>
             </div>
           : ''
         }
