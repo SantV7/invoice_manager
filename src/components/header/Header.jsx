@@ -10,6 +10,7 @@ const Header = () => {
   const [profileState, setProfileState] = useState(false)
   const [eyeState, setEyeState] = useState(true)
   const [phone, setPhone] = useState("")
+  const [userName, setUserName] = useState('')
 
   const verifyTelNumber = (e) => {
     let value = e.target.value
@@ -19,7 +20,6 @@ const Header = () => {
     value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
     value = value.replace(/(\d{5})(\d)/, "$1-$2")
     setPhone(value)
-
   }
 
 
@@ -27,22 +27,22 @@ const Header = () => {
     <>
       <header className={styles.headerAcc}>
         <div onClick={() => setProfileState(!profileState)} className={styles.icon_user}>
-            <LiaUserSecretSolid color="lightgray" size={50}/>
+            <LiaUserSecretSolid color="white" size={50}/>
         </div>
+
+        <h2 className={styles.name_user_wellcome}>Acc: {userName ? userName : 'Usuário'}</h2>
 
         {
           profileState
           ? <div id={styles.area_profile}>
               <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
-              <input className={styles.data_user} type="text" placeholder="Digite o nome de usuário"/>
-              <br />
-
+              <input onChange={(e) => setUserName(e.target.value)} className={styles.data_user} type="text" placeholder="Digite o nome de usuário"/>
+              
               <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
               <input value={phone} maxLength={15} onChange={(verifyTelNumber)} className={styles.data_user} type="tel" name="number_tell" id="number_tell" placeholder="(00) 00000-0000"/>
 
-              <br /> 
-
-              <button id="save_data">Salvar dados</button>
+              
+              <button className={styles.save_profile_btn}>Salvar dados</button>
             </div>
           : ''
         }
