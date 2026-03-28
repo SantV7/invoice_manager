@@ -1,0 +1,7 @@
+.invoice_title {
+    background-color: purple;
+    color: white;
+    padding: 5px 12px 5px 12px;
+    border-radius: 12px;
+    font-size: 1.15em;
+}
