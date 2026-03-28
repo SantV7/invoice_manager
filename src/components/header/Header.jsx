@@ -7,14 +7,27 @@ import { useState } from "react";
 
 
 const Header = () => {
+  const [profileState, setProfileState] = useState(false)
+
+
+
 
     const [eyeState, setEyeState] = useState(true)
   return (
     <>
       <header className={styles.headerAcc}>
-        <div className={styles.icon_user}>
+        <div onClick={() => setProfileState(!profileState)} className={styles.icon_user}>
             <LiaUserSecretSolid color="lightgray" size={50}/>
         </div>
+
+        {
+          profileState
+          ? <div id="area_profile">
+              <label htmlFor="name_user">Nome de usuário</label>
+              <input type="text" placeholder="Digite o nome de usuário"/>
+            </div>
+          : ''
+        }
 
         <div className={styles.icon_usage}>
             <div onClick={() => setEyeState(!eyeState)} className="eyeReveal">

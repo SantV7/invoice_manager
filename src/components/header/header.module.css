@@ -6,6 +6,7 @@
 }
 
 .icon_user {
+    cursor: pointer;
     box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.116);
     width: 54.2px;
     height: 54.2px;
@@ -27,6 +28,7 @@
 .icons_hover {
     transition: ease 0.3s;
 }
+
 .icons_hover:hover {
     scale: 1.1;
 }
