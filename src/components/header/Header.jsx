@@ -4,24 +4,32 @@ import { FaEyeLowVision } from "react-icons/fa6";
 import { FaHistory } from "react-icons/fa";
 import styles from '../header/header.module.css' 
 import { useState } from "react";
+import HistoryInvoice from "./HistoryInvoice";
 
 
 const Header = () => {
+
   const [profileState, setProfileState] = useState(false)
   const [eyeState, setEyeState] = useState(true)
   const [phone, setPhone] = useState("")
   const [userName, setUserName] = useState('')
+  const [historyInvoice, setHistoryInvoice] = useState(false)
+
 
   const verifyTelNumber = (e) => {
     let value = e.target.value
 
     value = value.replace(/\D/g, "")
-
     value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
     value = value.replace(/(\d{5})(\d)/, "$1-$2")
     setPhone(value)
   }
 
+  const [newUserName, setNewUserName] = useState('')
+
+  function saveDataProfile () {
+    setNewUserName(userName)
+  }
 
   return (
     <>
@@ -30,7 +38,7 @@ const Header = () => {
             <LiaUserSecretSolid color="white" size={50}/>
         </div>
 
-        <h2 className={styles.name_user_wellcome}>Acc: {userName ? userName : 'Usuário'}</h2>
+        <h2 className={styles.name_user_wellcome}>Olá {userName ? newUserName : 'Usuário'}</h2>
 
         {
           profileState
@@ -40,9 +48,8 @@ const Header = () => {
               
               <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
               <input value={phone} maxLength={15} onChange={(verifyTelNumber)} className={styles.data_user} type="tel" name="number_tell" id="number_tell" placeholder="(00) 00000-0000"/>
-
               
-              <button className={styles.save_profile_btn}>Salvar dados</button>
+              <button onClick={() => saveDataProfile()} className={styles.save_profile_btn}>Salvar dados</button>
             </div>
           : ''
         }
@@ -57,9 +64,15 @@ const Header = () => {
             </div>
             
             <div className="reloadResults">
-                <FaHistory className={styles.icons_hover} size={26} />
+                <FaHistory onClick={() => setHistoryInvoice(!historyInvoice)} className={styles.icons_hover} size={26} />
             </div>
         </div>
+
+        {
+          historyInvoice
+          ? <HistoryInvoice />
+          : ''
+        }
       </header>    
     </>
   )
