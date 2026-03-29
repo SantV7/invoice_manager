@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import styles from '../header/historyInvoice.module.css'
+import { IoMdClose } from "react-icons/io";
 
-const HistoryInvoice = () => {
+const HistoryInvoice = ({showHistory}) => {
   const [listInvoice] = useState([
     'Fatura Jan : 723,53',
     'Fatura Fev : 723,53'
   ])
 
-  const [addInvoice, setAddInvoice] = useState(false)
+
+  const closeInvoice = () => {
+    showHistory(false)
+  }
 
 
   return (
@@ -15,17 +19,15 @@ const HistoryInvoice = () => {
       <section className={styles.sect_invoices}>
         <header className={styles.invoice_title}>
           <span>Faturas</span>
-          <div className={styles.close_invoices}>X</div>
+          <IoMdClose onClick={() => closeInvoice()} id={styles.invoice_close} size={31} color="red"/>
         </header>
         
 
-        <button className={styles.add_invoice} onClick={() => setAddInvoice(!addInvoice)}>Adicionar fatura</button>
+        <button className={styles.add_invoice}>
+          Adicionar fatura
+        </button>
 
-        {
-          addInvoice
-          ? <div></div>
-          : ''
-        }
+ 
 
         <div>
           <ul className={styles.ul_item}>

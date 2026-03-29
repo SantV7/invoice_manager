@@ -89,7 +89,7 @@ const Header = () => {
 
         {
           historyInvoice
-          ? <HistoryInvoice />
+          ? <HistoryInvoice showHistory={setHistoryInvoice} />
           : ''
         }
       </header>    
