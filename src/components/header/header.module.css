@@ -22,6 +22,11 @@
     transform: translateX(-50%);
 }
 
+.header_profile {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
 .label_data_profile {
     font-size: 20px;
     font-weight: 600;
@@ -54,7 +59,7 @@
 
 .save_profile_btn {
     margin-top: 5px;
-    transition: ease-out 0.2s;
+    transition: ease-out 0.27s;
     border-radius: 10px;
     border: none;
     color: white;

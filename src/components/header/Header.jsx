@@ -1,6 +1,7 @@
 import { LiaUserSecretSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
+import { IoMdClose } from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import styles from '../header/header.module.css' 
 import { useState } from "react";
@@ -43,7 +44,10 @@ const Header = () => {
         {
           profileState
           ? <div id={styles.area_profile}>
-              <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
+              <header className={styles.header_profile}>
+                <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
+              </header>
+
               <input onChange={(e) => setUserName(e.target.value)} className={styles.data_user} type="text" placeholder="Digite o nome de usuário"/>
               
               <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
