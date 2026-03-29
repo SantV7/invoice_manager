@@ -32,6 +32,10 @@ const Header = () => {
     setNewUserName(userName)
   }
 
+  function closeProfile() {
+    setProfileState(false)
+  }
+
   return (
     <>
       <header className={styles.headerAcc}>
@@ -46,12 +50,21 @@ const Header = () => {
           ? <div id={styles.area_profile}>
               <header className={styles.header_profile}>
                 <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
+                <IoMdClose onClick={() => closeProfile()} id={styles.icon_close} size={31} color="red"/>
               </header>
 
-              <input onChange={(e) => setUserName(e.target.value)} className={styles.data_user} type="text" placeholder="Digite o nome de usuário"/>
+              <input onChange={(e) => setUserName(e.target.value)}
+               className={styles.data_user} type="text"
+               placeholder="Digite o nome de usuário"
+              />
               
               <label className={styles.label_data_profile} htmlFor="number_tell">Numero de telefone</label>
-              <input value={phone} maxLength={15} onChange={(verifyTelNumber)} className={styles.data_user} type="tel" name="number_tell" id="number_tell" placeholder="(00) 00000-0000"/>
+              <input value={phone} maxLength={15} onChange={(verifyTelNumber)} className={styles.data_user}
+               type="tel"
+               name="number_tell"
+               id="number_tell"
+               placeholder="(00) 00000-0000"
+              />
               
               <button onClick={() => saveDataProfile()} className={styles.save_profile_btn}>Salvar dados</button>
             </div>
@@ -68,7 +81,9 @@ const Header = () => {
             </div>
             
             <div className="reloadResults">
-                <FaHistory onClick={() => setHistoryInvoice(!historyInvoice)} className={styles.icons_hover} size={26} />
+                <FaHistory onClick={() => setHistoryInvoice(!historyInvoice)}
+                 className={styles.icons_hover} size={26} 
+                />
             </div>
         </div>
 

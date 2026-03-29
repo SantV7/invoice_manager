@@ -25,8 +25,20 @@
 .header_profile {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-content: start;
 }
+
+#icon_close {
+    background-color: rgb(49, 43, 43);
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: -10.516px;
+    right: -10.13px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.26);
+}
+
+
 .label_data_profile {
     font-size: 20px;
     font-weight: 600;
