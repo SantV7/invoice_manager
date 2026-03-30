@@ -28,18 +28,41 @@ const Header = () => {
 
   const [newUserName, setNewUserName] = useState('')
 
-  function saveDataProfile () {
-    setNewUserName(userName)
+  function saveDataProfile() {
+     setNewUserName(userName)
   }
 
   function closeProfile() {
-    setProfileState(false)
+     setProfileState(false)
   }
+
+  const openProfile = () => {
+     setProfileState(!profileState)
+     if (profileState === false) {
+      setProfileState(true)
+      setHistoryInvoice(false)
+     } else {
+      setProfileState(false)
+     }
+  }
+
+    const openHistory = () => {
+      setHistoryInvoice(!historyInvoice)
+      if (historyInvoice === false) {
+        setHistoryInvoice(true)
+        setProfileState(false)
+      } else {
+        setHistoryInvoice(false)
+      }
+  }
+
+
+
 
   return (
     <>
       <header className={styles.headerAcc}>
-        <div onClick={() => setProfileState(!profileState)} className={styles.icon_user}>
+        <div onClick={() => openProfile()} className={styles.icon_user}>
             <LiaUserSecretSolid color="white" size={50}/>
         </div>
 
@@ -81,7 +104,7 @@ const Header = () => {
             </div>
             
             <div className="reloadResults">
-                <FaHistory onClick={() => setHistoryInvoice(!historyInvoice)}
+                <FaHistory onClick={() => openHistory()}
                  className={styles.icons_hover} size={26} 
                 />
             </div>

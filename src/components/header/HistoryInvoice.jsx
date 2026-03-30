@@ -23,9 +23,11 @@ const HistoryInvoice = ({showHistory}) => {
         </header>
         
 
-        <button className={styles.add_invoice}>
-          Adicionar fatura
-        </button>
+        <div className={styles.area_btn}>
+          <button className={styles.add_invoice}>
+            Adicionar fatura
+          </button>
+        </div>
 
  
 
