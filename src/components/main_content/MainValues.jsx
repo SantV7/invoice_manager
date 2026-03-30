@@ -47,7 +47,7 @@ const MainValues = () => {
         const value = parseFloat(tempAmount.replace(',', '.'))
         if (!isNaN(value) && value > 0) {
             setBankBalance(bankBalance + value)
-            addToHistory('Adição', value)
+            addToHistory('+Saldo', value)
             closeAddMoney()
         }
     }
@@ -57,7 +57,7 @@ const MainValues = () => {
         if (!isNaN(value) && value > 0) {
             if (value <= bankBalance) {
                 setBankBalance(bankBalance - value)
-                addToHistory('Saque', value)
+                addToHistory('Saque de', value)
                 closeGetMoney()
             } else {
                 alert("Saldo insuficiente!")
