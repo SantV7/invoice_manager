@@ -5,14 +5,7 @@ import {IoMdClose} from "react-icons/io";
 const HistoryInvoice = ({showHistory}) => {
 
   const [valuesInvoice] = useState([
-    289.90,
-    240,
-    42,
-    73.54,
-    91.9,
-    12.76,
-    26.97,
-    6.98
+ 
   ])
 
   const [listInvoice] = useState([
@@ -61,8 +54,27 @@ const HistoryInvoice = ({showHistory}) => {
           ? <section className={styles.more_invoice}>
               <header className={styles.header_add_invoice}>
                 <div></div>
-                <IoMdClose onClick={() => closeAddInvoice()}  size={31} color="red"/>
+                <IoMdClose className={styles.close_add_invoice} onClick={() => closeAddInvoice()}  size={31} color="red"/>
               </header>
+
+              <main>
+                <label htmlFor="mesFatura">Mês da fatura</label>
+                <select name="mesFatura" id="mesFatura">
+                  <option disabled>Mês</option>
+                  <option value="janeiro">Janeiro</option>
+                  <option value="fevereiro">Fevereiro</option>
+                  <option value="março">Março</option>
+                  <option value="abril">Abril</option>
+                  <option value="maio">Maio</option>
+                  <option value="junho">Junho</option>
+                  <option value="julho">Julho</option>
+                  <option value="agosto">Agosto</option>
+                  <option value="setembro">Setembro</option>
+                  <option value="novembro">Novembro</option>
+                  <option value="outubro">Outubro</option>
+                  <option value="dezembro">Dezembro</option>
+                </select>
+              </main>
           </section>
           : ''
           
