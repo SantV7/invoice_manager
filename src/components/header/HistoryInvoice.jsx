@@ -1,49 +1,48 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import styles from '../header/historyInvoice.module.css'
-import {IoMdClose} from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
-const HistoryInvoice = ({showHistory}) => {
+const HistoryInvoice = ({ showHistory }) => {
+  const [valuesInvoice, setValuesInvoice] = useState(new Array(12).fill(0))
+  const [moreInvoice, setMoreInvoice] = useState(false)
+  const [selectedMonth, setSelectedMonth] = useState("")
+  const [tempValue, setTempValue] = useState("")
 
-  const [valuesInvoice] = useState([
- 
-  ])
-
-  const [listInvoice] = useState([
-    'Fatura Jan ',
-    'Fatura Fev ',
-    'Fatura Mar ',
-    'Fatura Abr ',
-    'Fatura Mai ',
-    'Fatura Jun ',
-    'Fatura Jul ',
-    'Fatura Ago ',
-    'Fatura Set ',
-    'Fatura Out ',
-    'Fatura Nov',
-    'Fatura Dez'
-  ])
+  const listInvoice = [
+    'Fatura Jan', 'Fatura Fev', 'Fatura Mar', 'Fatura Abr',
+    'Fatura Mai', 'Fatura Jun', 'Fatura Jul', 'Fatura Ago',
+    'Fatura Set', 'Fatura Out', 'Fatura Nov', 'Fatura Dez'
+  ]
 
   const closeInvoice = () => {
     showHistory(false)
   }
 
-  const [moreInvoice, setMoreInvoice] = useState(false)
-
   function closeAddInvoice() {
     setMoreInvoice(false)
+    setSelectedMonth("")
+    setTempValue("")
   }
 
-   
+  function handleSaveInvoice() {
+    const monthIndex = parseInt(selectedMonth)
+    const value = parseFloat(tempValue.replace(',', '.'))
 
+    if (!isNaN(monthIndex) && !isNaN(value)) {
+      const newValues = [...valuesInvoice]
+      newValues[monthIndex] = value
+      setValuesInvoice(newValues)
+      closeAddInvoice()
+    }
+  }
 
   return (
     <>
       <section className={styles.sect_invoices}>
         <header className={styles.invoice_title}>
           <span>Faturas</span>
-          <IoMdClose onClick={() => closeInvoice()} id={styles.invoice_close} size={31} color="black"/>
+          <IoMdClose onClick={() => closeInvoice()} id={styles.invoice_close} size={31} color="black" />
         </header>
-
 
         <div className={styles.area_btn}>
           <button onClick={() => setMoreInvoice(!moreInvoice)} className={styles.add_invoice}>
@@ -53,57 +52,68 @@ const HistoryInvoice = ({showHistory}) => {
 
         {
           moreInvoice
-          ? <section className={styles.more_invoice}>
+            ? <section className={styles.more_invoice}>
               <header className={styles.header_add_invoice}>
                 <div></div>
-                <IoMdClose className={styles.close_add_invoice} onClick={() => closeAddInvoice()}  size={31} color="red"/>
+                <IoMdClose className={styles.close_add_invoice} onClick={() => closeAddInvoice()} size={31} color="red" />
               </header>
 
               <main className={styles.main_add_invoice}>
-
                 <div className="month_invoice_area">
                   <label className={styles.label_invoices} htmlFor="mesFatura">Mês da fatura</label>
-                  <select className={styles.inputs_invoice} defaultValue="" name="mesFatura" id="mesFatura">
+                  <select 
+                    className={styles.inputs_invoice} 
+                    value={selectedMonth} 
+                    onChange={(e) => setSelectedMonth(e.target.value)} 
+                    name="mesFatura" 
+                    id="mesFatura"
+                  >
                     <option value="" disabled>Mês</option>
-                    <option value="janeiro">Janeiro</option>
-                    <option value="fevereiro">Fevereiro</option>
-                    <option value="março">Março</option>
-                    <option value="abril">Abril</option>
-                    <option value="maio">Maio</option>
-                    <option value="junho">Junho</option>
-                    <option value="julho">Julho</option>
-                    <option value="agosto">Agosto</option>
-                    <option value="setembro">Setembro</option>
-                    <option value="novembro">Novembro</option>
-                    <option value="outubro">Outubro</option>
-                    <option value="dezembro">Dezembro</option>
+                    <option value="0">Janeiro</option>
+                    <option value="1">Fevereiro</option>
+                    <option value="2">Março</option>
+                    <option value="3">Abril</option>
+                    <option value="4">Maio</option>
+                    <option value="5">Junho</option>
+                    <option value="6">Julho</option>
+                    <option value="7">Agosto</option>
+                    <option value="8">Setembro</option>
+                    <option value="9">Outubro</option>
+                    <option value="10">Novembro</option>
+                    <option value="11">Dezembro</option>
                   </select>
                 </div>
 
                 <div className='value_invoice_area'>
                   <label className={styles.label_invoices} htmlFor="value_invoice">Valor da fatura</label>
-                  <input id='value_invoice' className={styles.inputs_invoice} type="text" value={0}/>
+                  <input 
+                    id='value_invoice' 
+                    className={styles.inputs_invoice} 
+                    type="text" 
+                    placeholder="0,00"
+                    value={tempValue}
+                    onChange={(e) => setTempValue(e.target.value)}
+                  />
                 </div>
               </main>
 
-              <button className={styles.btn_save_invoice}>Adicionar nova Fatura</button>
-          </section>
-          : ''
-          
+              <button onClick={handleSaveInvoice} className={styles.btn_save_invoice}>Adicionar nova Fatura</button>
+            </section>
+            : ''
         }
- 
 
         <div>
           <ul className={styles.ul_item}>
             {
               listInvoice.map((itemInvoice, indexInvoice) => (
-                <li className={styles.invoice_list} key={indexInvoice}>{itemInvoice}: R$ {(itemInvoice ? valuesInvoice[indexInvoice] || 0 : '').toFixed(2)}</li>
+                <li className={styles.invoice_list} key={indexInvoice}>
+                  {itemInvoice}: R$ {valuesInvoice[indexInvoice].toFixed(2).replace('.', ',')}
+                </li>
               ))
             }
           </ul>
         </div>
       </section>
-    
     </>
   )
 }
