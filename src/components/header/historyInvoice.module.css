@@ -1,14 +1,14 @@
 .sect_invoices {
     background-color: white;
     position: absolute;
-    top: 20%;
+    top: 13%;
     left: 50%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 6px;
     border-top-right-radius: 3px;
     transform: translateX(-50%);
-    width: 70%;
+    width: 100%;
     padding-bottom: 17px;
     border: 1px solid black;
 }
@@ -39,14 +39,16 @@
 }
 
 #invoice_close {
-    background-color: rgb(49, 43, 43);
     border-bottom-left-radius: 5px;
     cursor: pointer;
     position: relative;
-    top: -6.7px;
-    right: -11.5px;
-    border-top-right-radius: 3px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.26);
+    right: -7px;
+    transition:  ease-in-out 0.23s;
+    border-radius: 50%;
+
+    &:hover {
+        background-color: rgba(175, 175, 224, 0.541);
+    }
 }
 
 .area_btn {
@@ -71,12 +73,29 @@
 .invoice_list {
     list-style: none;
     border: 1px solid rgba(0, 0, 0, 0.197);
-    box-shadow: 0px 0px 5px rgba(32, 11, 45, 0.199);
+    box-shadow: 0px 0px 17px rgba(32, 11, 45, 0.109);
     border-radius: 5px;
     width: 96.5%;
     transition: ease-in-out 0.3s;
     padding: 5px 8px 5px 8px;
 }
 
+.more_invoice {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    height: 400px;
+    border-radius: 5px; 
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.384);
+    background-color: rgb(156, 148, 175);
+}
 
-.more_invoice
+.header_add_invoice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;   
+    
+}

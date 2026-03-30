@@ -13,8 +13,8 @@
     background-color: rgb(220, 222, 240);
     border-radius: 6px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.212);
-    height: 210px;
-    width: 76%;
+    height: 240px;
+    width: 95%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -46,13 +46,16 @@
 .label_data_profile {
     font-size: 20px;
     font-weight: 600;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.212);
-
+    margin-bottom: 3px;
+    width: 78%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.432);
 }
+
 .name_user_wellcome {
     margin-top: 14px;
     color: white;
 }
+
 .data_user {
     margin-bottom: 5px;
     width: 100%;
