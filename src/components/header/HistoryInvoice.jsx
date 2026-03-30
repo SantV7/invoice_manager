@@ -57,23 +57,34 @@ const HistoryInvoice = ({showHistory}) => {
                 <IoMdClose className={styles.close_add_invoice} onClick={() => closeAddInvoice()}  size={31} color="red"/>
               </header>
 
-              <main>
-                <label htmlFor="mesFatura">Mês da fatura</label>
-                <select name="mesFatura" id="mesFatura">
-                  <option disabled>Mês</option>
-                  <option value="janeiro">Janeiro</option>
-                  <option value="fevereiro">Fevereiro</option>
-                  <option value="março">Março</option>
-                  <option value="abril">Abril</option>
-                  <option value="maio">Maio</option>
-                  <option value="junho">Junho</option>
-                  <option value="julho">Julho</option>
-                  <option value="agosto">Agosto</option>
-                  <option value="setembro">Setembro</option>
-                  <option value="novembro">Novembro</option>
-                  <option value="outubro">Outubro</option>
-                  <option value="dezembro">Dezembro</option>
-                </select>
+              <main className={styles.main_add_invoice}>
+
+
+                <div className="month_invoice_area">
+                  <label htmlFor="mesFatura">Mês da fatura</label>
+                  <select className={styles.inputs_invoice} defaultValue="" name="mesFatura" id="mesFatura">
+                    <option value="" disabled>Mês</option>
+                    <option value="janeiro">Janeiro</option>
+                    <option value="fevereiro">Fevereiro</option>
+                    <option value="março">Março</option>
+                    <option value="abril">Abril</option>
+                    <option value="maio">Maio</option>
+                    <option value="junho">Junho</option>
+                    <option value="julho">Julho</option>
+                    <option value="agosto">Agosto</option>
+                    <option value="setembro">Setembro</option>
+                    <option value="novembro">Novembro</option>
+                    <option value="outubro">Outubro</option>
+                    <option value="dezembro">Dezembro</option>
+                  </select>
+                </div>
+
+                <div className='value_invoice_area'>
+                  <label htmlFor="value_invoice">Valor da fatura</label>
+                  <input className={styles.inputs_invoice} type="text" name="" id="" value={0}/>
+                </div>
+
+
               </main>
           </section>
           : ''

@@ -107,5 +107,18 @@
     justify-content: space-between;
     align-items: center;
     flex-flow: row nowrap;   
-    
+}
+
+.main_add_invoice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding: 10px;
+}
+
+.inputs_invoice {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
 }
