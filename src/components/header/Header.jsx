@@ -1,7 +1,7 @@
 import { LiaUserSecretSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
-import { IoMdClose } from "react-icons/io";
+import {IoMdClose} from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import styles from '../header/header.module.css' 
 import { useState } from "react";
