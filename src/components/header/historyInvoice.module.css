@@ -63,8 +63,9 @@
     border: 1px solid rgb(149, 104, 255);
     padding: 7px 15px 7px 15px;
     background-color: rgb(84, 77, 102);
-    font-size: 17px;
+    font-size: 18.6px;
     border-radius: 5px;
+    width: 65%;
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
     color: white;
     font-weight: 600;
