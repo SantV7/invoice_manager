@@ -33,6 +33,8 @@ const HistoryInvoice = ({showHistory}) => {
     setMoreInvoice(false)
   }
 
+   
+
 
   return (
     <>
@@ -59,9 +61,8 @@ const HistoryInvoice = ({showHistory}) => {
 
               <main className={styles.main_add_invoice}>
 
-
                 <div className="month_invoice_area">
-                  <label htmlFor="mesFatura">Mês da fatura</label>
+                  <label className={styles.label_invoices} htmlFor="mesFatura">Mês da fatura</label>
                   <select className={styles.inputs_invoice} defaultValue="" name="mesFatura" id="mesFatura">
                     <option value="" disabled>Mês</option>
                     <option value="janeiro">Janeiro</option>
@@ -80,12 +81,12 @@ const HistoryInvoice = ({showHistory}) => {
                 </div>
 
                 <div className='value_invoice_area'>
-                  <label htmlFor="value_invoice">Valor da fatura</label>
-                  <input className={styles.inputs_invoice} type="text" name="" id="" value={0}/>
+                  <label className={styles.label_invoices} htmlFor="value_invoice">Valor da fatura</label>
+                  <input id='value_invoice' className={styles.inputs_invoice} type="text" value={0}/>
                 </div>
-
-
               </main>
+
+              <button className={styles.btn_save_invoice}>Adicionar nova Fatura</button>
           </section>
           : ''
           
