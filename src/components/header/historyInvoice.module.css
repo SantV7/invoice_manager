@@ -21,14 +21,6 @@
     flex-flow: column nowrap;
 }
 
-.close_invoices {
-    cursor: pointer;
-    transition: scale 0.35s;
-
-    &:hover {
-        scale: 1.17;
-    }
-}
 
 .invoice_title {
     display: flex;
@@ -61,14 +53,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px 10px 20px 10px;
 }
 
 .add_invoice {
+    cursor: pointer;
     border: 1px solid rgb(149, 104, 255);
     padding: 7px 15px 7px 15px;
     background-color: rgb(84, 77, 102);
     font-size: 17px;
     border-radius: 5px;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    color: white;
     font-weight: 600;
 }
 
@@ -81,3 +77,6 @@
     transition: ease-in-out 0.3s;
     padding: 5px 8px 5px 8px;
 }
+
+
+.more_invoice

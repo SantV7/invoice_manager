@@ -3,6 +3,10 @@
     justify-content: space-between;
     align-items: start;
     padding: 10px;
+    background-color: rgba(32, 38, 53, 0.342);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.199);
 }
 
 #area_profile {
@@ -78,7 +82,6 @@
     cursor: pointer;
     margin: auto;
     background-color: rgb(114, 99, 128);
-    width: 50%;
     font-weight: 550;
     border-bottom: 4px solid transparent;
     border-right: 3px solid transparent;
@@ -88,8 +91,9 @@
 
     &:hover {
         transform:translateY(5px);
-    border-bottom: 4px solid rgb(248, 243, 250);
-    border-right: 3px solid  rgb(224, 221, 245);        
+        border: 1px solid rgba(38, 20, 61, 0.658);
+        border-bottom: 4px solid rgb(248, 243, 250);
+        border-right: 3px solid  rgb(224, 221, 245);        
         scale: 1.03;
     }
 }
