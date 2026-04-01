@@ -58,21 +58,30 @@ const Header = () => {
       }
   }
 
+ 
 
   useEffect(() => {
-    gsap.fromTo( '#area_profile', {
-      x: 20,
-      opacity:0.5,
-      duration: 2,
-      ease: 'elastic.in'
-    },
-    {
-      x: 0,
-      opacity: 1
-    }
-    )
-  }, [])
+    if(profileState === true) {
+      gsap.fromTo('.profile_gsap', {
+        y: 60,
+  
+        opacity: 0.5,
+        scale: 0.9
+      },
+      {
+        y: 0,
+        duration: 0.5,
+        ease: 'power.2',
+        opacity: 1,
+       scale: 1
+      }
+      )      
+    } 
+  }, [profileState])
 
+
+
+  
   return (
     <>
       <header className={styles.headerAcc}>
@@ -84,7 +93,7 @@ const Header = () => {
 
         {
           profileState
-          ? <div id={styles.area_profile}>
+          ? <div className="profile_gsap" id={styles.area_profile}>
               <header className={styles.header_profile}>
                 <label className={styles.label_data_profile} htmlFor="name_user">Nome de usuário</label>
                 <IoMdClose onClick={() => closeProfile()} id={styles.icon_close} size={31} color="red"/>
