@@ -4,8 +4,10 @@ import { FaEyeLowVision } from "react-icons/fa6";
 import {IoMdClose} from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import styles from '../header/header.module.css' 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import HistoryInvoice from "./HistoryInvoice";
+import { gsap } from "gsap";
 
 
 const Header = () => {
@@ -57,7 +59,19 @@ const Header = () => {
   }
 
 
-
+  useEffect(() => {
+    gsap.fromTo( '#area_profile', {
+      x: 20,
+      opacity:0.5,
+      duration: 2,
+      ease: 'elastic.in'
+    },
+    {
+      x: 0,
+      opacity: 1
+    }
+    )
+  }, [])
 
   return (
     <>
