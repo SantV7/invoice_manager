@@ -5,15 +5,13 @@ import {IoMdClose} from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import styles from '../header/header.module.css' 
 import { useEffect, useState } from "react";
-
 import HistoryInvoice from "./HistoryInvoice";
 import { gsap } from "gsap";
 
 
-const Header = () => {
-
+const Header = ({eyeState, setEyeState}) => {
   const [profileState, setProfileState] = useState(false)
-  const [eyeState, setEyeState] = useState(true)
+
   const [phone, setPhone] = useState("")
   const [userName, setUserName] = useState('')
   const [historyInvoice, setHistoryInvoice] = useState(false)
