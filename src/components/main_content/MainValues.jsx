@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import styles from '../main_content/mainValues.module.css'
 import { IoMdClose } from "react-icons/io";
+import gsap from 'gsap';
 
 const MainValues = ({ eyeState }) => {
     const [bankBalance, setBankBalance] = useState(0)
@@ -9,15 +10,18 @@ const MainValues = ({ eyeState }) => {
     const [tempAmount, setTempAmount] = useState("")
     const [history, setHistory] = useState([])
 
+    const addMoneyRef = useRef(null)
+    const getMoneyRef = useRef(null)
+
     const addMoneyFunction = () => {
-        if (addMoney === false) {
+        if (!addMoney) {
             setAddMoney(true)
             setGetMoney(false)
         }
     }
 
     const getMoneyFunction = () => {
-        if (getMoney === false) {
+        if (!getMoney) {
             setGetMoney(true)
             setAddMoney(false)
         }
@@ -65,6 +69,27 @@ const MainValues = ({ eyeState }) => {
         }
     }
 
+    useEffect(() => {
+        if (addMoney && addMoneyRef.current) {
+            gsap.fromTo(addMoneyRef.current, 
+                { opacity: 0, y: 80 }, 
+                { duration: 0.8, opacity: 1, y: 0, ease: 'power2' }
+            );
+        }
+    }, [addMoney]);
+
+    useEffect(() => {
+        if (getMoney && getMoneyRef.current) {
+            gsap.fromTo(getMoneyRef.current, 
+                { opacity: 0, y: 80 }, 
+                { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }
+            );
+        }
+    }, [getMoney]);
+
+
+
+
     return (
         <>
             <main id={styles.main_value_area}>
@@ -75,19 +100,19 @@ const MainValues = ({ eyeState }) => {
                             : 'R$ ••••••'}
                     </h3>
                     <div className={styles.transference_cash}>
-                        <button onClick={() => addMoneyFunction()} className={styles.bank_balance_value}>Adicionar saldo</button>
-                        <button onClick={() => getMoneyFunction()} className={styles.bank_balance_value}>Sacar saldo</button>
+                        <button onClick={addMoneyFunction} className={styles.bank_balance_value}>Adicionar saldo</button>
+                        <button onClick={getMoneyFunction} className={styles.bank_balance_value}>Sacar saldo</button>
                     </div>
                 </section>
 
                 {addMoney && (
-                    <div className={styles.area_add_value}>
+                    <div ref={addMoneyRef} className={styles.area_add_value}>
                         <header id={styles.header_add_value}>
                             <div></div>
-                            <IoMdClose style={{ cursor: 'pointer' }} onClick={() => closeAddMoney()} size={37} color="red" />
+                            <IoMdClose style={{ cursor: 'pointer' }} onClick={closeAddMoney} size={37} color="red" />
                         </header>
                         <div>
-                            <label htmlFor="">Valor a ser adicionado:</label>
+                            <label>Valor a ser adicionado:</label>
                             <input
                                 value={tempAmount}
                                 onChange={(e) => setTempAmount(e.target.value)}
@@ -100,10 +125,10 @@ const MainValues = ({ eyeState }) => {
                 )}
 
                 {getMoney && (
-                    <div className={styles.area_add_value}>
+                    <div ref={getMoneyRef} className={styles.area_add_value}>
                         <header id={styles.header_add_value}>
                             <div></div>
-                            <IoMdClose style={{ cursor: 'pointer' }} onClick={() => closeGetMoney()} size={37} color="red" />
+                            <IoMdClose style={{ cursor: 'pointer' }} onClick={closeGetMoney} size={37} color="red" />
                         </header>
                         <div>
                             <label htmlFor="saque">Valor a ser sacado:</label>
