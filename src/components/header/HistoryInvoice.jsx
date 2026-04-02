@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from '../header/historyInvoice.module.css'
 import { IoMdClose } from "react-icons/io";
 import gsap from 'gsap';
 
 const HistoryInvoice = ({ showHistory }) => {
 
+  const sectionHistory = useRef(null)
 
   const [valuesInvoice, setValuesInvoice] = useState(new Array(12).fill(0))
   const [moreInvoice, setMoreInvoice] = useState(false)
@@ -40,21 +41,24 @@ const HistoryInvoice = ({ showHistory }) => {
   }
 
   useEffect(() => {
-    gsap.fromTo('.sect_invoices', {
-      opacity: 0.5,
-      y: 125
+   if(sectionHistory.current)  {
+    gsap.fromTo(sectionHistory.current, {
+      opacity: 0.35,
+      y: 65
     }, {
       duration: 0.36,
       opacity: 1,
-      ease: 'power2'
+      ease: 'power2',
+      y: 0
     })
-  }, [historyInvoice])
-  
+   }
+  }, [])
+
 
 
   return (
     <>
-      <section className={styles.sect_invoices}>
+      <section ref={sectionHistory} className={styles.sect_invoices}>
         <header className={styles.invoice_title}>
           <span>Faturas</span>
           <IoMdClose onClick={() => closeInvoice()} id={styles.invoice_close} size={31} color="black" />
