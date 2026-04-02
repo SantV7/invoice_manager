@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../header/historyInvoice.module.css'
 import { IoMdClose } from "react-icons/io";
+import gsap from 'gsap';
 
 const HistoryInvoice = ({ showHistory }) => {
+
+
   const [valuesInvoice, setValuesInvoice] = useState(new Array(12).fill(0))
   const [moreInvoice, setMoreInvoice] = useState(false)
   const [selectedMonth, setSelectedMonth] = useState("")
@@ -35,6 +38,19 @@ const HistoryInvoice = ({ showHistory }) => {
       closeAddInvoice()
     }
   }
+
+  useEffect(() => {
+    gsap.fromTo('.sect_invoices', {
+      opacity: 0.5,
+      y: 125
+    }, {
+      duration: 0.36,
+      opacity: 1,
+      ease: 'power2'
+    })
+  }, [historyInvoice])
+  
+
 
   return (
     <>
