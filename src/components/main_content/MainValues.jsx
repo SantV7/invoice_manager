@@ -73,7 +73,12 @@ const MainValues = ({ eyeState }) => {
         if (addMoney && addMoneyRef.current) {
             gsap.fromTo(addMoneyRef.current, 
                 { opacity: 0, y: 80 }, 
-                { duration: 0.8, opacity: 1, y: 0, ease: 'power2' }
+                {
+                 duration: 0.8,
+                 opacity: 1,
+                 y: 0,
+                 ease: 'power2'
+                }
             );
         }
     }, [addMoney]);
@@ -156,7 +161,7 @@ const MainValues = ({ eyeState }) => {
                                     <span>
                                         {eyeState 
                                             ? `R$ ${item.value.toFixed(2).replace('.', ',')}` 
-                                            : 'R$ ***'}
+                                            : 'R$ ****'}
                                     </span>
                                     <small>{item.date}</small>
                                 </li>

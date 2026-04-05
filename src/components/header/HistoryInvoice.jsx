@@ -60,8 +60,10 @@ const HistoryInvoice = ({ showHistory }) => {
    if(moreInvoicesSection.current) {
     gsap.fromTo(moreInvoicesSection.current, {
       opacity: 0.7,
-      y: -40
+      y: -40,
+      scale: 1.1
     }, {
+      scale: 1,
       y: 0,
       duration: 0.41,
       ease: 'power2',
