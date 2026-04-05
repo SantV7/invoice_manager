@@ -53,21 +53,22 @@ const HistoryInvoice = ({ showHistory }) => {
       y: 0
     })
    }
-
-   if(moreInvoicesSection.current) {
-    gsap.fromTo(moreInvoicesSection.current, {
-      opacity: 0.4,
-      y: -100
-    }, {
-      y: 0,
-      duration: 0.25,
-      ease: 'power1.in',
-      opacity: 1
-    })
-   }
   }, [])
 
 
+  useEffect(() => {
+   if(moreInvoicesSection.current) {
+    gsap.fromTo(moreInvoicesSection.current, {
+      opacity: 0.7,
+      y: -40
+    }, {
+      y: 0,
+      duration: 0.41,
+      ease: 'power2',
+      opacity: 1
+    })
+   }
+  }, [moreInvoice])
 
   return (
     <>
@@ -85,7 +86,7 @@ const HistoryInvoice = ({ showHistory }) => {
 
         {
           moreInvoice
-            ? <section ref={moreInvoicesSection.current} className={styles.more_invoice}>
+            ? <section ref={moreInvoicesSection} className={styles.more_invoice}>
               <header className={styles.header_add_invoice}>
                 <div></div>
                 <IoMdClose className={styles.close_add_invoice} onClick={() => closeAddInvoice()} size={31} color="red" />
