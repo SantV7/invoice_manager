@@ -61,7 +61,7 @@ const MainValues = ({ eyeState }) => {
         if (!isNaN(value) && value > 0) {
             if (value <= bankBalance) {
                 setBankBalance(bankBalance - value)
-                addToHistory('Saque de', value)
+                addToHistory('Saque de R$', value)
                 closeGetMoney()
             } else {
                 alert("Saldo insuficiente!")
@@ -83,6 +83,7 @@ const MainValues = ({ eyeState }) => {
         }
     }, [addMoney]);
 
+
     useEffect(() => {
         if (getMoney && getMoneyRef.current) {
             gsap.fromTo(getMoneyRef.current, 
@@ -93,7 +94,7 @@ const MainValues = ({ eyeState }) => {
     }, [getMoney]);
 
 
-
+    
     return (
         <>
             <main id={styles.main_value_area}>

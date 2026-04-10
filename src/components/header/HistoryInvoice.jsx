@@ -72,6 +72,9 @@ const HistoryInvoice = ({ showHistory }) => {
    }
   }, [moreInvoice])
 
+
+
+
   return (
     <>
       <section ref={sectionHistory} className={styles.sect_invoices}>
@@ -102,8 +105,7 @@ const HistoryInvoice = ({ showHistory }) => {
                     value={selectedMonth} 
                     onChange={(e) => setSelectedMonth(e.target.value)} 
                     name="mesFatura" 
-                    id="mesFatura"
-                  >
+                    id="mesFatura">
                     <option value="" disabled>Mês</option>
                     <option value="0">Janeiro</option>
                     <option value="1">Fevereiro</option>
@@ -149,6 +151,7 @@ const HistoryInvoice = ({ showHistory }) => {
             }
           </ul>
         </div>
+
       </section>
     </>
   )
