@@ -3,8 +3,7 @@
     justify-content: space-between;
     align-items: start;
     padding: 10px;
-
-    background-color: rgba(32, 38, 53, 0.342);
+    background-color: rgba(32, 38, 53, 0.456);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.199);
@@ -37,7 +36,7 @@
 #icon_close {
     background-color: rgb(49, 43, 43);
     border-bottom-left-radius: 5px;
-      border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
     cursor: pointer;
     position: relative;
     top: -10.516px;
