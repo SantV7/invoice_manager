@@ -94,7 +94,6 @@ const MainValues = ({ eyeState }) => {
 
 
 
-
     return (
         <>
             <main id={styles.main_value_area}>

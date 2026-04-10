@@ -87,7 +87,7 @@ const Header = ({eyeState, setEyeState}) => {
             <LiaUserSecretSolid color="white" size={50}/>
         </div>
 
-        <h2 className={styles.name_user_wellcome}>Olá {userName ? newUserName : 'Usuário'}</h2>
+        <h2 className={styles.name_user_wellcome}>Olá {userName ? newUserName : ''}</h2>
 
         {
           profileState
