@@ -35,7 +35,7 @@ useEffect(() => {
   }
 
   const intervalTimer = setInterval(() => {
-    (updateTime)
+    updateTime()
   }, 1000);
 
   return () => clearInterval(intervalTimer)
@@ -51,7 +51,7 @@ useEffect(() => {
 
 
     <footer>
-      <section>
+      <section id='area_timer' >
         <p>{showTimer}</p>
         <div>{dayInfo}</div>
       </section>
