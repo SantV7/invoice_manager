@@ -3,9 +3,8 @@ import styles from '../main_content/mainValues.module.css'
 import { IoMdClose } from "react-icons/io";
 import gsap from 'gsap';
 
-const MainValues = ({ eyeState }) => {
+const MainValues = ({ eyeState, addMoney, setAddMoney }) => {
     const [bankBalance, setBankBalance] = useState(0)
-    const [addMoney, setAddMoney] = useState(false)
     const [getMoney, setGetMoney] = useState(false)
     const [tempAmount, setTempAmount] = useState("")
     const [history, setHistory] = useState([])
@@ -14,17 +13,13 @@ const MainValues = ({ eyeState }) => {
     const getMoneyRef = useRef(null)
 
     const addMoneyFunction = () => {
-        if (!addMoney) {
-            setAddMoney(true)
-            setGetMoney(false)
-        }
+        setAddMoney(true)
+        setGetMoney(false)
     }
 
     const getMoneyFunction = () => {
-        if (!getMoney) {
-            setGetMoney(true)
-            setAddMoney(false)
-        }
+        setGetMoney(true)
+        setAddMoney(false)
     }
 
     const closeAddMoney = () => {
@@ -73,16 +68,10 @@ const MainValues = ({ eyeState }) => {
         if (addMoney && addMoneyRef.current) {
             gsap.fromTo(addMoneyRef.current, 
                 { opacity: 0, y: 80 }, 
-                {
-                 duration: 0.8,
-                 opacity: 1,
-                 y: 0,
-                 ease: 'power2'
-                }
+                { duration: 0.8, opacity: 1, y: 0, ease: 'power2' }
             );
         }
     }, [addMoney]);
-
 
     useEffect(() => {
         if (getMoney && getMoneyRef.current) {
@@ -93,53 +82,28 @@ const MainValues = ({ eyeState }) => {
         }
     }, [getMoney]);
 
+    const [showTimer, setShowTimer] = useState('')
+    const [dayInfo, setDayInfo] = useState('')
 
-  const [showTimer, setShowTimer] = useState('')
-  const [dayInfo, setDayInfo] = useState('')
+    useEffect(() => {
+        const dayWeek = { 0: 'Domingo', 1: 'Segunda', 2: 'Terça', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sábado' }
+        setDayInfo(dayWeek[new Date().getDay()])
+    }, [])
 
+    useEffect(() => {
+        const intervalTimer = setInterval(() => {
+            const now = new Date()
+            setShowTimer(`${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}h`)
+        }, 1000);
+        return () => clearInterval(intervalTimer)
+    }, [])
 
-
-  useEffect(() => {
-   const dayWeek = {
-    0: 'Domingo',
-    1: 'Segunda',
-    2: 'Terça',
-    3: 'Quarta',
-    4: 'Quinta',
-    5: 'Sexta',
-    6: 'Sábado',
-  }
-    const now = new Date()
-    const dayNow = dayWeek[now.getDay()]
-    setDayInfo(dayNow)
-  }, [])
-
-useEffect(() => {
-  function updateTime() {
-    const timeGetter = new Date()
-    const hours = timeGetter.getHours()
-    const minutes = timeGetter.getMinutes()
-    setShowTimer(`${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}h`)
-  }
-
-  const intervalTimer = setInterval(() => {
-    updateTime()
-  }, 1000);
-
-  return () => clearInterval(intervalTimer)
-}, [])
-
-
-
-    
     return (
         <>
             <main id={styles.main_value_area}>
                 <section className={styles.bank_balance}>
                     <h3 className={styles.bank_balance_state}>
-                        Saldo: {eyeState 
-                            ? `R$ ${bankBalance.toFixed(2).replace('.', ',')}` 
-                            : 'R$ ••••••'}
+                        Saldo: {eyeState ? `R$ ${bankBalance.toFixed(2).replace('.', ',')}` : 'R$ ••••••'}
                     </h3>
                     <div className={styles.transference_cash}>
                         <button onClick={addMoneyFunction} className={styles.bank_balance_value}>Adicionar saldo</button>
@@ -155,12 +119,7 @@ useEffect(() => {
                         </header>
                         <div>
                             <label>Valor a ser adicionado:</label>
-                            <input
-                                value={tempAmount}
-                                onChange={(e) => setTempAmount(e.target.value)}
-                                type="text"
-                                placeholder="0,00"
-                            />
+                            <input value={tempAmount} onChange={(e) => setTempAmount(e.target.value)} type="text" placeholder="0,00" />
                             <button onClick={confirmAdd}>Confirmar Depósito</button>
                         </div>
                     </div>
@@ -174,13 +133,7 @@ useEffect(() => {
                         </header>
                         <div>
                             <label htmlFor="saque">Valor a ser sacado:</label>
-                            <input
-                                value={tempAmount}
-                                onChange={(e) => setTempAmount(e.target.value)}
-                                type="text"
-                                id='saque'
-                                placeholder="0,00"
-                            />
+                            <input value={tempAmount} onChange={(e) => setTempAmount(e.target.value)} type="text" id='saque' placeholder="0,00" />
                             <button onClick={confirmWithdraw}>Confirmar Saque</button>
                         </div>
                     </div>
@@ -192,30 +145,19 @@ useEffect(() => {
                         {history.length > 0 ? (
                             history.map((item) => (
                                 <li key={item.id} className={styles.history_item}>
-                                    <span className={item.type === 'Saque de' ? styles.type_withdraw : styles.type_add}>
-                                        {item.type}
-                                    </span>
-                                    <span>
-                                        {eyeState 
-                                            ? `R$ ${item.value.toFixed(2).replace('.', ',')}` 
-                                            : 'R$ ****'}
-                                    </span>
+                                    <span className={item.type.includes('Saque') ? styles.type_withdraw : styles.type_add}>{item.type}</span>
+                                    <span>{eyeState ? `R$ ${item.value.toFixed(2).replace('.', ',')}` : 'R$ ****'}</span>
                                     <small>{item.date}</small>
                                 </li>
                             ))
-                        ) : (
-                            <p>Nenhuma transação realizada.</p>
-                        )}
+                        ) : <p>Nenhuma transação realizada.</p>}
                     </ul>
                 </section>
-
-                
             </main>
-
             <section id='area_timer' >
                <p>{showTimer}</p>
                <div>{dayInfo}</div>
-            </section>         
+            </section>
         </>
     )
 }
