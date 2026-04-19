@@ -5,6 +5,8 @@ import MainValues from './components/main_content/MainValues'
 function App() {
 
   const [eyeState, setEyeState] = useState(true)
+
+  const [timerCounter, setTimerCounter] = useState(0)
   
   return (
     <>
@@ -13,6 +15,9 @@ function App() {
 
 
     <footer>
+      <section>
+        <p>timeHour</p>
+      </section>
       
     </footer>
     </>
