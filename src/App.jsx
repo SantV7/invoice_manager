@@ -7,17 +7,14 @@ function App() {
   const [eyeState, setEyeState] = useState(true)
   const [showTimer, setShowTimer] = useState('')
 
-// Refazer o horário e a data (vc foi burro e falhou várias vezes)
+
 
 useEffect(() => {
-
   function updateTime() {
-    //  AGORA DEVO CRAIR A FUNÇÃO E SUAS FEATURES
-
     const timeGetter = new Date()
     const hours = timeGetter.getHours()
     const minutes = timeGetter.getMinutes()
-    const seconds = timeGetter.getSeconds()
+    setShowTimer(`${hours}:${minutes}h`)
   }
 
   const intervalTimer = setInterval(() => {
