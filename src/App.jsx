@@ -10,6 +10,11 @@ function App() {
     <>
     <Header eyeState={eyeState} setEyeState={setEyeState} />
     <MainValues eyeState={eyeState} />
+
+
+    <footer>
+      
+    </footer>
     </>
   )
 }
