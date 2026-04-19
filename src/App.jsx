@@ -13,6 +13,11 @@ useEffect(() => {
 
   function updateTime() {
     //  AGORA DEVO CRAIR A FUNÇÃO E SUAS FEATURES
+
+    const timeGetter = new Date()
+    const hours = timeGetter.getHours()
+    const minutes = timeGetter.getMinutes()
+    const seconds = timeGetter.getSeconds()
   }
 
   const intervalTimer = setInterval(() => {
