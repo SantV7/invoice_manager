@@ -5,7 +5,11 @@
     width: 100%;
     margin-top: 7px;
     color: white;
+    padding-top: 4px;
     padding-bottom: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(51, 39, 51, 0.308);
 
     .icons_shortcuts {
         transition: ease 0.2s;

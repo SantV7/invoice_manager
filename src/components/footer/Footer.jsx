@@ -12,11 +12,13 @@ const Footer = ({ profileLink, moreInvoices, historyInvoices }) => {
         className={styles.icons_shortcuts} 
         size={35} 
       />
+
       <IoMdAdd 
         onClick={moreInvoices} 
         className={styles.icons_shortcuts} 
         size={35} 
       />
+      
       <MdRestorePage 
         onClick={historyInvoices} 
         className={styles.icons_shortcuts} 
